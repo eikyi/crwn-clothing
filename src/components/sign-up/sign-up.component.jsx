@@ -28,6 +28,7 @@ const SingUpForm = () => {
             const { user } = await createAuthUserWithEmailAndPassword(email,password);
             console.log(user)
             const userDocFef = await createUserDocumentFromAuth(user,{ displayName })
+            resetFormFields();
 
         }catch(error) {
             if(error.code == 'auth/email-already-in-use'){
