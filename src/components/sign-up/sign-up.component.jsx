@@ -14,6 +14,7 @@ const SingUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormField);
     const {displayName, email, password, confirmPassword} = formFields;
 
+
     const resetFormFields = () => {
         setFormFields(defaultFormField);
     }
@@ -26,7 +27,7 @@ const SingUpForm = () => {
         };
         try {
             const { user } = await createAuthUserWithEmailAndPassword(email,password);
-            console.log(user)
+            //setCurrentUser(user);
             const userDocFef = await createUserDocumentFromAuth(user,{ displayName })
             resetFormFields();
 
