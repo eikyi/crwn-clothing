@@ -21,18 +21,19 @@ const SingUpForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if(password != confirmPassword) {
+        if(password !== confirmPassword) {
             alert("Password and confirm password do not match!");
             return;
         };
         try {
             const { user } = await createAuthUserWithEmailAndPassword(email,password);
             //setCurrentUser(user);
-            const userDocFef = await createUserDocumentFromAuth(user,{ displayName })
+            const userDocRef = await createUserDocumentFromAuth(user,{ displayName })
+            console.log(userDocRef);
             resetFormFields();
 
         }catch(error) {
-            if(error.code == 'auth/email-already-in-use'){
+            if(error.code === 'auth/email-already-in-use'){
                 alert('Cannot create user, email already in use');
             }else{
                 console.log('User creation error: s',error);
