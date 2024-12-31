@@ -5,7 +5,7 @@ import { useContext } from 'react';
 
 
 const Checkout = () => {
-    const {cartItems,grandTotalAmount} = useContext(CartContext);
+    const {cartItems,grandTotal} = useContext(CartContext);
     console.log(cartItems);
     return(
         <CheckoutContainer>
@@ -29,7 +29,7 @@ const Checkout = () => {
             {cartItems.map((item) => (
                 <CheckoutItem key={item.id} checkoutItem={item} />
             ))}
-            <Total>Grand Total: {grandTotalAmount}</Total>
+            <Total>Grand Total: {grandTotal}</Total>
         </CheckoutContainer>
         
     );
